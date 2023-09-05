@@ -1,0 +1,81 @@
+db:
+  username: ${username.value:postgres}
+  password: pass
+  driver: PostgresDriver
+  url: postgres:5432
+  hosts: localhost,127.0.0.1
+  properties:
+    first: 123
+    second: 567
+    third.value: Third
+  pool:
+    size: 12
+    timeout: 10
+  pools:
+    - size: 1
+      timeout: 1
+    - size: 2
+      timeout: 2
+    - size: 3
+      timeout: 3
+
+app:
+  common:
+    logging:
+      level: INFO
+      enabled: true
+
+logging:
+  file:
+    name: sharov.log
+    path: /
+  level:
+    org:
+      springframework:
+        jdbc:
+          core: TRACE
+    root: info
+
+spring:
+  mvc:
+    view:
+      prefix: /WEB-INF/jsp/
+      suffix: .jsp
+    format:
+      date: iso
+  datasource:
+    url: jdbc:postgresql://localhost:5433/postgres
+    username: postgres
+    password: pass
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    properties:
+      hibernate:
+        show_sql: true
+        format_sql: true
+        hbm2ddl:
+          auto: validate
+        jdbc:
+          batch_size: 50
+    open-in-view: false
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: 254243548214-o5fhbga9mv53q5aoiqlv1flbt0jatqqn.apps.googleusercontent.com
+            client-secret: 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
+            redirect-uri: http://localhost:8080/login/oauth2/code/google
+            scope:
+              - openid
+              - email
+              - profile
+  messages:
+    basename: messages
+springdoc:
+  swagger-ui:
+    oauth:
+      client-id: 254243548214-o5fhbga9mv53q5aoiqlv1flbt0jatqqn.apps.googleusercontent.com
+      client-secret: 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
+      scopes: openid, email, profile
+    oauth2-redirect-url: http://localhost:8080/swagger-ui/oauth2-redirect.html
