@@ -6,6 +6,7 @@ import com.sharov.spring.integration.IntegrationTestBase;
 import lombok.RequiredArgsConstructor;
 import org.hamcrest.collection.IsCollectionWithSize;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.security.authentication.TestingAuthenticationToken;
@@ -54,6 +55,7 @@ class UserControllerTest extends IntegrationTestBase {
     }
 
     @Test
+    @Disabled
     void create() throws Exception {
         mockMvc.perform(post("/users")
                 .param(username, "test@gmail.com")

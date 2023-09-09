@@ -68,7 +68,6 @@ public class SecurityConfiguration {
     private OAuth2UserService<OidcUserRequest, OidcUser> oidcUserService() {
         return userRequest -> {
             String email = userRequest.getIdToken().getClaim("email");
-            // TODO
             UserDetails userDetails = userService.loadUserByUsername(email);
 
             DefaultOidcUser oidcUser = new DefaultOidcUser(userDetails.getAuthorities(), userRequest.getIdToken());

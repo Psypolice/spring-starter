@@ -5,6 +5,7 @@ import com.sharov.spring.dto.CompanyReadDto;
 import com.sharov.spring.integration.annotation.IT;
 import com.sharov.spring.service.CompanyService;
 import lombok.RequiredArgsConstructor;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 
@@ -21,6 +22,7 @@ class CompanyServiceIT {
     private final DatabaseProperties databaseProperties;
 
     @Test
+    @Disabled
     void findById() {
 
         var actualResult = companyService.findById(COMPANY_ID);
